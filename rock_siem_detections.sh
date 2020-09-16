@@ -8,7 +8,7 @@ echo "Adding the rock user with password to ES keystore without confirmation"
 KIBANA_USER="$(grep -E "U: .*" KIBANA_CREDS.README)"
 ELASTIC_PASS="$(grep -E "P: .*" KIBANA_CREDS.README)"
 
-printf it_admin | /usr/share/elasticsearch/bin/elasticsearch-keystore add -x "bootstrap.password" -f
+printf ${KIBANA_USER#U:} | /usr/share/elasticsearch/bin/elasticsearch-keystore add -x "bootstrap.password" -f
 /usr/share/elasticsearch/bin/elasticsearch-users useradd "${KIBANA_USER#U:}" -p "${ELASTIC_PASS#P:}" -r superuser
 
 
