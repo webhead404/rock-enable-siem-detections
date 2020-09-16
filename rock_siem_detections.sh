@@ -35,11 +35,10 @@ echo "              authz_exception: false" >> /etc/elasticsearch/elasticsearch.
 
 echo "Adding required changes to kibana.yml"
 
-cat >/etc/kibana/kibana.yml <<EOF
-xpack.security.enabled: true
-xpack.ingestManager.fleet.tlsCheckDisabled: true
-xpack.encryptedSavedObjects.encryptionKey: 'fhjskloppd678ehkdfdlliverpoolfcr'
-EOF
+echo xpack.security.enabled: true >> /etc/kibana/kibana.yml
+echo xpack.ingestManager.fleet.tlsCheckDisabled: true >> /etc/kibana/kibana.yml
+echo xpack.encryptedSavedObjects.encryptionKey: 'fhjskloppd678ehkdfdlliverpoolfcr' >> /etc/kibana/kibana.yml
+
 
 systemctl start elasticsearch
 
